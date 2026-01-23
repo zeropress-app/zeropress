@@ -1,5 +1,10 @@
 # ZeroPress
 
+[![GitHub stars](https://img.shields.io/github/stars/zeropress-app/zeropress?style=social)](https://github.com/zeropress-app/zeropress)
+[![License](https://img.shields.io/github/license/zeropress-app/zeropress)](LICENSE)
+[![Cloudflare](https://img.shields.io/badge/Cloudflare-Native-orange)](https://www.cloudflare.com/)
+
+
 > **ZeroPress** is a modern, Cloudflare-native CMS built for both developers and non-developers.  
 > Fast, secure, globally distributed — with zero traditional servers.
 
