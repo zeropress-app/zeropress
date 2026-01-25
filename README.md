@@ -6,7 +6,8 @@
 
 
 > **ZeroPress** is a modern, Cloudflare-native CMS built for both developers and non-developers.  
-> Fast, secure, globally distributed — with zero traditional servers.
+> Fast, secure, globally distributed — with zero traditional servers.  
+> **ZeroPress** runs on Cloudflare’s V8 isolate runtime at the edge.
 
 ---
 
