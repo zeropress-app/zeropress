@@ -127,16 +127,27 @@ ZeroPress never stores plaintext passwords.
 
 Passwords are hashed using a standards-based key derivation function designed for password storage.
 
+### Password Requirements
+- Minimum length: 12 characters
+- Passphrases with spaces are allowed and encouraged
+- Passwords must not contain:
+  - the user’s email address or username
+  - known breached passwords
+- Maximum length: 256 characters (server-side enforced for stability)
+
 ### Hashing Algorithm
 
 - **Algorithm**: PBKDF2 (HMAC-SHA256)
-- **Iterations**: ≥ 310,000
-- **Salt**: Cryptographically secure random salt (unique per password)
+- **Iterations**: 100,000
+- **Salt**: Cryptographically secure random salt (unique per password). 16 bytes
 - **Derived key length**: 256 bits
+- **Storage format**: $pbkdf2-sha256$100000$<salt>$<hash>
 
 PBKDF2 is defined in RFC 8018 (PKCS #5) and is approved by NIST and FIPS. This choice balances strong security guarantees with compatibility in the Cloudflare Workers runtime.
 
 Hash metadata (algorithm, hash function, iteration count, salt) is stored alongside the derived hash to allow future upgrades.
+
+Due to the computational constraints of the Cloudflare Workers runtime, password security relies on a combination of PBKDF2-HMAC-SHA256 (100,000 iterations) and strong user password entropy enforced through minimum length and breached-password checks.
 
 ---
 
