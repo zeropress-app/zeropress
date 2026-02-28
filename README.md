@@ -70,15 +70,15 @@ flowchart TB
 ZeroPress is intentionally split by responsibility.
 
 ### Core & Platform
-- **`zeropress-alpha-backend`**  
+- **[`zeropress-core`](https://github.com/zeropress-app/zeropress-core)**  
   Core API, authentication, content handling, and storage abstraction
 
 ### Admin & Operations
-- **`zeropress-admin-dashboard1`**  
+- **[`zeropress-studio`](https://github.com/zeropress-app/zeropress-studio)**  
   Admin dashboard for managing content, users, and system settings
 
 ### Public Site
-- **`zeropress_userpage_v3`**  
+- **[`zeropress-pages`](https://github.com/zeropress-app/zeropress-pages)**  
   User-facing pages optimized for SEO, performance, and global delivery
 
 > 💡 This repository is the main entry point.  
@@ -100,15 +100,15 @@ ZeroPress is intentionally split by responsibility.
 ## Getting Started
 
 ### I just want to try it
-- Start with **`zeropress_userpage_v3`**
+- Start with **[`zeropress-pages`](https://github.com/zeropress-app/zeropress-pages)**
 - Deploy to Cloudflare Pages in minutes
 
 ### I want to build with ZeroPress
-- Explore **`zeropress-alpha-backend`**
+- Explore **[`zeropress-core`](https://github.com/zeropress-app/zeropress-core)**
 - Extend APIs, auth flows, or storage layers
 
 ### I want to manage content
-- Use **`zeropress-admin-dashboard1`**
+- Use **[`zeropress-studio`](https://github.com/zeropress-app/zeropress-studio)**
 
 > Detailed setup and deployment guides are available in each repository.
 
@@ -163,5 +163,4 @@ See the [LICENSE](LICENSE) file for details.
 - Documentation (coming soon)
 - Discussions
 - Issues
-
 
