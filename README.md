@@ -81,8 +81,8 @@ ZeroPress is intentionally split by responsibility.
 - **[`zeropress-pages`](https://github.com/zeropress-app/zeropress-pages)**  
   User-facing pages optimized for SEO, performance, and global delivery
 
-> 💡 This repository is the main entry point.  
-> Dive into individual repositories when you want to build or contribute.
+> 💡 This repository is the gateway to the three ZeroPress codebases.  
+> Use it as the starting point to navigate `zeropress-core`, `zeropress-studio`, and `zeropress-pages`.
 
 ---
 
@@ -114,6 +114,15 @@ ZeroPress is intentionally split by responsibility.
 
 ---
 
+## Developer Tooling
+
+For local theme development workflows:
+
+- **`zeropress-theme`** — [npm](https://www.npmjs.com/package/zeropress-theme) · [GitHub](https://github.com/zeropress-app/zeropress-theme)
+- **`create-zeropress-theme`** — [npm](https://www.npmjs.com/package/create-zeropress-theme) · [GitHub](https://github.com/zeropress-app/create-zeropress-theme)
+
+---
+
 ## Philosophy
 
 ZeroPress is opinionated:
@@ -131,12 +140,12 @@ We optimize for:
 
 ## Roadmap (High-level)
 
-- Stabilized Core API
-- Plugin / extension model
-- Theme system
-- Multi-tenant support
-- Improved admin UX
-- Official documentation site
+- [Done] Stabilized Core API
+- [Done] Theme system
+- [In Progress] Improved admin UX
+- [In Progress] Official documentation site
+- [Planned] Plugin / extension model
+- [Planned] Multi-tenant support
 
 ---
 
@@ -160,7 +169,6 @@ See the [LICENSE](LICENSE) file for details.
 
 ## Links
 
-- Documentation (coming soon)
-- Discussions
-- Issues
-
+- [Documentation](https://docs.zeropress.app/)
+- [Discussions](https://github.com/zeropress-app/zeropress/discussions)
+- [Issues](https://github.com/zeropress-app/zeropress/issues)
