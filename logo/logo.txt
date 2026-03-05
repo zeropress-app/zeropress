@@ -1,0 +1,25 @@
+### Why the Cube?
+
+Most CMS platforms represent speed, security, or cloud infrastructure.
+
+ZeroPress represents something different.
+
+It represents the artifact.
+
+ZeroPress does not exist to run servers.\
+It exists to produce durable HTML files.
+
+The cube symbolizes:
+
+* Content assembled with structure
+
+* Builds that can be reproduced
+
+* Files that can outlive runtimes
+
+* Publishing without operational burden
+
+ZeroPress is not a platform.\
+It is a publishing engine.
+
+The cube reflects that idea.
