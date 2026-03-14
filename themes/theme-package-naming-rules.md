@@ -129,10 +129,10 @@ acme inc
 
 ### Length
 
-Recommended:
+Required:
 
 ```text
-3-32 characters
+3-24 characters
 ```
 
 ### Uniqueness
@@ -259,10 +259,10 @@ clean blog
 
 ### Length
 
-Recommended:
+Required:
 
 ```text
-3-64 characters
+3-32 characters
 ```
 
 ### Uniqueness
@@ -386,8 +386,8 @@ This internal path is an implementation detail, but it is the recommended struct
 
 | Component | Pattern | Notes |
 | --- | --- | --- |
-| `namespace` | `^[a-z0-9]+(-[a-z0-9]+)*$` | globally unique, immutable, reserved words blocked |
-| `slug` | `^[a-z0-9]+(-[a-z0-9]+)*$` | unique within namespace, effectively immutable after publish |
+| `namespace` | `^[a-z0-9]+(-[a-z0-9]+)*$`, length `3-24` | globally unique, immutable, reserved words blocked |
+| `slug` | `^[a-z0-9]+(-[a-z0-9]+)*$`, length `3-32` | unique within namespace, effectively immutable after publish |
 | `version` | `^[0-9]+\.[0-9]+\.[0-9]+$` | current public contract uses stable SemVer only |
 
 Canonical package identity:
