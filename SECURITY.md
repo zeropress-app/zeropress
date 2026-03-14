@@ -128,12 +128,17 @@ ZeroPress never stores plaintext passwords.
 Passwords are hashed using a standards-based key derivation function designed for password storage.
 
 ### Password Requirements
-- Minimum length: 12 characters
+- Minimum length: 15 characters
 - Passphrases with spaces are allowed and encouraged
-- Passwords must not contain:
-  - the user’s email address or username
-  - known breached passwords
 - Maximum length: 256 characters (server-side enforced for stability)
+- Passwords are checked against a blocklist that includes:
+  - known breached passwords
+  - commonly used passwords
+  - context-specific values such as the service name, username, email address, and obvious derivatives
+- Password managers, paste, and browser autofill are allowed
+- Passwords are not silently truncated before hashing
+
+ZeroPress does not require composition rules such as mandatory uppercase letters, numbers, or symbols. Users are encouraged to choose long, unique passphrases instead.
 
 ### Hashing Algorithm
 
@@ -143,11 +148,23 @@ Passwords are hashed using a standards-based key derivation function designed fo
 - **Derived key length**: 256 bits
 - **Storage format**: $pbkdf2-sha256$100000$<salt>$<hash>
 
-PBKDF2 is defined in RFC 8018 (PKCS #5) and is approved by NIST and FIPS. This choice balances strong security guarantees with compatibility in the Cloudflare Workers runtime.
+PBKDF2-HMAC-SHA256 is used because it is supported in the Cloudflare Workers runtime and remains acceptable for compatibility-sensitive deployments.
 
 Hash metadata (algorithm, hash function, iteration count, salt) is stored alongside the derived hash to allow future upgrades.
 
-Due to the computational constraints of the Cloudflare Workers runtime, password security relies on a combination of PBKDF2-HMAC-SHA256 (100,000 iterations) and strong user password entropy enforced through minimum length and breached-password checks.
+The current PBKDF2 baseline is a compatibility constraint. The Cloudflare Workers runtime currently imposes limits that constrain higher PBKDF2 work factors inside the Worker itself. For this reason, ZeroPress treats password strength as a layered control that combines:
+
+- strong minimum password length
+- breached-password and context-aware blocklist checks
+- per-account and per-IP online attack throttling
+- single-use recovery tokens
+- transparent rehash on successful login when stronger parameters become available
+
+### Preferred Authenticators
+
+ZeroPress prefers phishing-resistant authenticators such as passkeys (WebAuthn) when available.
+
+Passwords remain supported for compatibility, but they are treated as a higher-risk authenticator than passkeys or multi-factor authentication. Enabling MFA or passkeys does not relax password storage requirements, but it does materially reduce risk from credential stuffing, password reuse, and phishing.
 
 ---
 
@@ -198,9 +215,16 @@ The email delivery layer is intentionally pluggable to avoid long-term vendor lo
 
 To reduce abuse and account enumeration:
 
+- Failed password authentication attempts are rate-limited per account and per IP address
+- Progressive backoff begins after 5 failed password attempts within 15 minutes
+- A password authenticator may be temporarily locked for 30 minutes after 10 consecutive failed attempts
+- No password authenticator is permitted to exceed 100 consecutive failed attempts without requiring an explicit recovery or rebind flow
 - Password reset and verification requests are rate-limited
-- Limits may apply per IP address and per email address
+- Password reset issuance is limited per IP address and per email address
+- Email verification issuance is limited per IP address and per email address
 - Excessive or abusive requests may be silently rejected
+
+These thresholds are baseline defaults and may be tightened over time in response to abuse patterns or updated standards.
 
 ---
 
